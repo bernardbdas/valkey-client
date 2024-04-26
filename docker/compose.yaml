@@ -1,0 +1,23 @@
+services:
+  valkey-server:
+    image: valkey/valkey:unstable
+    container_name: valkey-container
+    networks:
+      net0:
+        aliases:
+          - "valkey.service"
+    ports:
+      - 8992:6379
+    volumes:
+      - ./conf:/usr/local/etc/valkey
+
+# volumes:
+#   db-data:
+
+# secrets:
+#   db-credentials:
+#     file: secrets.txt
+
+networks:
+  net0:
+    driver: bridge
